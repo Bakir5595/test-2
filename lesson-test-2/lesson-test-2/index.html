@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Delegation</title>
+    <style>
+        button {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+<div id="button-container">
+    <button>red</button>
+    <button>green</button>
+    <button>blue</button>
+    <button>yellow</button>
+    <button>purple</button>
+</div>
+
+<script>
+
+    const container = document.getElementById('button-container');
+
+
+    container.addEventListener('click', function(event) {
+
+        if (event.target.tagName === 'BUTTON') {
+
+            document.body.style.backgroundColor = event.target.textContent;
+        }
+    });
+</script>
+</body>
+</html>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggle Block Visibility</title>
+    <style>
+        #square {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            margin-bottom: 10px;
+        }
+
+        #toggle-button {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="square"></div>
+<button id="toggle-button">Hide</button>
+
+<script>
+    // Получаем ссылки на блок и кнопку
+    const square = document.getElementById('square');
+    const button = document.getElementById('toggle-button');
+
+
+    let isVisible = true;
+
+
+    button.addEventListener('click', function() {
+        if (isVisible) {
+
+            square.style.display = 'none';
+            button.textContent = 'Show';
+        } else {
+
+            square.style.display = 'block';
+            button.textContent = 'Hide';
+        }
+
+        isVisible = !isVisible;
+    });
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Increment Counter</title>
+    <style>
+        #counter {
+            font-size: 48px;
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+<div id="counter">0</div>
+
+<script>
+    const counterElement = document.getElementById('counter');
+    let count = 0;
+
+    const intervalId = setInterval(() => {
+        if (count >= 100) {
+            clearInterval(intervalId);
+        } else {
+            count++;
+            counterElement.textContent = count;
+        }
+    }, 1);
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Fetch JSON on Button Click</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<button id="fetch-button">Fetch Data</button>-->
+
+<!--<script>-->
+<!-- -->
+<!--    const apiUrl = 'https://jsonplaceholder.typicode.com/posts/1'; -->
+<!--   -->
+<!--    async function fetchData() {-->
+<!--        try {-->
+<!--         -->
+<!--            const response = await fetch(apiUrl);-->
+
+<!--          -->
+<!--            if (!response.ok) {-->
+<!--                throw new Error('Network response was not ok');-->
+<!--            }-->
+
+<!--          -->
+<!--            const data = await response.json();-->
+
+<!--          -->
+<!--            console.log(data);-->
+<!--        } catch (error) {-->
+<!--           -->
+<!--            console.error('Error fetching data:', error);-->
+<!--        }-->
+<!--    }-->
+
+<!--  -->
+<!--    const button = document.getElementById('fetch-button');-->
+<!--    button.addEventListener('click', fetchData);-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->

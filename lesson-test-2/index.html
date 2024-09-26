@@ -1,0 +1,342 @@
+//ЗАДАЧКА
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Color Buttons</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div id="buttons-container">-->
+
+<!--    <button style="background-color: red;">Red</button>-->
+<!--    <button style="background-color: green;">Green</button>-->
+<!--    <button style="background-color: blue;">Blue</button>-->
+<!--    <button style="background-color: yellow;">Yellow</button>-->
+<!--    <button style="background-color: orange;">Orange</button>-->
+<!--</div>-->
+
+
+<!--<script>-->
+
+<!--    const buttons = document.querySelectorAll('#buttons-container button');-->
+
+
+<!--    buttons.forEach(button => {-->
+<!--        button.addEventListener('click', () => {-->
+<!--            alert(`You clicked the ${button.textContent} button!`);-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//ЗАДАЧКА
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Делегирование событий</title>
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        div {
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            color: #fff;
+        }
+
+
+        button:nth-child(1) {
+            background-color: red;
+        }
+
+        button:nth-child(2) {
+            background-color: green;
+        }
+
+        button:nth-child(3) {
+            background-color: blue;
+        }
+
+        button:nth-child(4) {
+            background-color: yellow;
+            color: black; /* Черный текст для контраста */
+        }
+
+        button:nth-child(5) {
+            background-color: purple;
+        }
+    </style>
+</head>
+<body>
+
+<div id="button-container">
+    <button>red</button>
+    <button>green</button>
+    <button>blue</button>
+    <button>yellow</button>
+    <button>purple</button>
+</div>
+
+<script>
+
+    const buttonContainer = document.getElementById('button-container');
+
+
+    buttonContainer.addEventListener('click', (event) => {
+
+        if (event.target.tagName === 'BUTTON') {
+
+            const color = event.target.textContent;
+
+            document.body.style.backgroundColor = color;
+        }
+    });
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+//ЗАДАЧКА
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Показать/Скрыть Блок</title>
+    <style>
+
+        #toggle-block {
+            width: 100px;
+            height: 100px;
+            background-color: #3498db;
+            margin-right: 10px;
+            display: block;
+        }
+
+
+        #toggle-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #2ecc71;
+            border: none;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+
+<div id="toggle-block"></div>
+<button id="toggle-button">Скрыть блок</button>
+
+<script>
+
+    const toggleBlock = document.getElementById('toggle-block');
+    const toggleButton = document.getElementById('toggle-button');
+
+
+    toggleButton.addEventListener('click', () => {
+
+        if (toggleBlock.style.display === 'none') {
+
+            toggleBlock.style.display = 'block';
+            toggleButton.textContent = 'Скрыть блок';
+        } else {
+            toggleBlock.style.display = 'none';
+            toggleButton.textContent = 'Показать блок';
+        }
+    });
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//ЗАДАЧКА
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Счётчик</title>
+    <style>
+
+        #counter {
+            font-size: 48px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="counter">0</div>
+
+<script>
+    let count = 0;
+    const counterElement = document.getElementById('counter');
+
+
+    const interval = setInterval(() => {
+        count++;
+        counterElement.textContent = count;
+
+
+        if (count >= 100) {
+            clearInterval(interval);
+        }
+    }, 1);
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//ЗАДАЧКА
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GET запрос на JSON</title>
+    <style>
+
+        #fetch-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #3498db;
+            border: none;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<button id="fetch-button">Получить данные</button>
+
+<script>
+
+    const jsonData = {
+        "users": [
+            { "id": 1, "name": "Alice", "age": 30 },
+            { "id": 2, "name": "Bob", "age": 25 },
+            { "id": 3, "name": "Charlie", "age": 35 }
+        ]
+    };
+
+
+    const express = require('express');
+    const app = express();
+    const PORT = 3000;
+
+
+    app.get('/data', (req, res) => {
+        res.json(jsonData);
+    });
+
+
+    app.listen(PORT, () => {
+        console.log(`Сервер запущен на http://localhost:${PORT}`);
+    });
+
+
+    async function fetchData() {
+        try {
+            const response = await fetch('http://localhost:3000/data');
+            if (!response.ok) {
+                throw new Error(`Ошибка: ${response.status}`);
+            }
+            const data = await response.json();
+            console.log(data);
+        } catch (error) {
+            console.error('Ошибка при получении данных:', error);
+        }
+    }
+
+
+    document.getElementById('fetch-button').addEventListener('click', fetchData);
+</script>
+
+</body>
+</html>
